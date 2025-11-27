@@ -76,12 +76,12 @@ export const VALIDATION = {
   MAX_QUANTITY: 100,
 };
 
-// Rate Limiting
+// Rate Limiting (Production Safe)
 export const RATE_LIMIT = {
   LOGIN_WINDOW_MS: 15 * 60 * 1000, // 15 minutes
-  LOGIN_MAX_ATTEMPTS: 50,
+  LOGIN_MAX_ATTEMPTS: 5, // Reduced from 50 to prevent brute force
   API_WINDOW_MS: 15 * 60 * 1000, // 15 minutes
-  API_MAX_REQUESTS: 100,
+  API_MAX_REQUESTS: 30, // Reduced from 100 for safety
 };
 
 // HTTP Status Codes

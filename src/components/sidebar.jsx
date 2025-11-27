@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../lib/auth-context";
+import { useTheme } from "../lib/theme-context";
 import { useRouter } from "next/navigation";
 import {
   LayoutDashboard,
@@ -18,6 +19,8 @@ import {
   LogOut,
   ChefHat,
   User2,
+  Moon,
+  Sun,
 } from "lucide-react";
 
 const iconMap = {
@@ -39,6 +42,7 @@ const iconMap = {
 
 export function Sidebar({ items }) {
   const { user, logout } = useAuth();
+  const { mode, toggleMode } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -148,6 +152,25 @@ export function Sidebar({ items }) {
             </div>
           </div>
         </div>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleMode}
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl transition-all duration-200 text-amber-400 hover:text-amber-300 font-semibold group"
+          aria-label="Toggle dark/light mode"
+        >
+          {mode === 'dark' ? (
+            <>
+              <Sun className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45" />
+              <span>Light Mode</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45" />
+              <span>Dark Mode</span>
+            </>
+          )}
+        </button>
 
         {/* Logout Button */}
         <button
