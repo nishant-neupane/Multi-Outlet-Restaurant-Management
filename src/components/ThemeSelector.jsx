@@ -9,11 +9,7 @@ export default function ThemeSelector() {
   const [isOpen, setIsOpen] = useState(false);
 
   const themeOptions = [
-    { value: "orange", label: "Orange Sunrise", color: "#ea580c" },
-    { value: "green", label: "Fresh Green", color: "#16a34a" },
-    { value: "blue", label: "Ocean Blue", color: "#2563eb" },
-    { value: "purple", label: "Royal Purple", color: "#9333ea" },
-    { value: "red", label: "Vibrant Red", color: "#dc2626" },
+    { value: "blue", label: "Professional Blue", color: "#2375E0" },
   ];
 
   return (
@@ -76,7 +72,7 @@ export default function ThemeSelector() {
                   }}
                 >
                   <div
-                    className="w-6 h-6 rounded-full border-2 border-white shadow-sm"
+                    className="w-6 h-6 rounded-full border-2 border-white shadow-md"
                     style={{ backgroundColor: theme.color }}
                   />
                   <span className="text-sm font-medium">{theme.label}</span>

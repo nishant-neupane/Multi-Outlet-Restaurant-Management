@@ -111,11 +111,11 @@ export default function AdminBillingPage() {
       : tableGroups.filter((table) => table.outletId === selectedOutlet);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-4 md:p-6">
       <h1 className="text-2xl md:text-3xl font-bold text-color-primary mb-6">
         System-Wide Billing (Admin)
       </h1>
@@ -242,7 +242,7 @@ export default function AdminBillingPage() {
 
               <button
                 onClick={handleConfirmPayment}
-                className="w-full bg-color-success hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition"
               >
                 Confirm Payment
               </button>

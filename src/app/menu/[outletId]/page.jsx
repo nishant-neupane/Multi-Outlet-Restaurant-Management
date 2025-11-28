@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { Card, CardContent, CardFooter } from "../../../components/ui/button";
+import { Card, CardContent, CardFooter } from "../../../components/ui/card";
 import { Button } from "../../../components/ui/button";
 import { Badge } from "../../../components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
@@ -111,28 +111,28 @@ export default function PublicMenuPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <ChefHat className="w-16 h-16 text-orange-600 animate-bounce mx-auto mb-4" />
-          <p className="text-gray-600">Loading menu...</p>
+          <ChefHat className="w-16 h-16 text-blue-600 animate-bounce mx-auto mb-4" />
+          <p className="text-gray-800 dark:text-gray-100">Loading menu...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-40">
+        <div className="w-full px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <ChefHat className="w-8 h-8 text-orange-600" />
-                <h1 className="text-2xl font-bold text-gray-900">
+                <ChefHat className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <h1 className="text-2xl font-bold text-gray-950 dark:text-white">
                   {outlet?.name || "Restaurant Menu"}
                 </h1>
               </div>
               {outlet && (
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-800 dark:text-gray-100">
                   <div className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" />
                     <span>{outlet.location}</span>
@@ -149,7 +149,7 @@ export default function PublicMenuPage() {
               )}
             </div>
             <Button
-              className="relative bg-gradient-to-r from-orange-600 to-amber-600"
+              className="relative bg-gradient-to-r from-blue-600 to-indigo-600"
               onClick={() => {
                 if (cartCount > 0) {
                   toast.info("Proceed to checkout");
@@ -159,7 +159,7 @@ export default function PublicMenuPage() {
               <ShoppingCart className="w-5 h-5 mr-2" />
               Cart
               {cartCount > 0 && (
-                <Badge className="absolute -top-2 -right-2 bg-red-600">
+                <Badge className="absolute -top-2 -right-2 bg-blue-600">
                   {cartCount}
                 </Badge>
               )}
@@ -168,8 +168,8 @@ export default function PublicMenuPage() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <div className="w-full px-4 py-8">
+        <div className="grid lg:grid-cols-3 gap-6">
           {/* Menu Section */}
           <div className="lg:col-span-2">
             {/* Category Tabs */}
@@ -188,7 +188,7 @@ export default function PublicMenuPage() {
             {/* Menu Items Grid */}
             <div className="grid md:grid-cols-2 gap-6">
               {filteredItems.length === 0 ? (
-                <div className="col-span-2 text-center py-12 text-gray-500">
+                <div className="col-span-2 text-center py-12 text-gray-700 dark:text-gray-200">
                   No items available in this category
                 </div>
               ) : (
@@ -212,15 +212,15 @@ export default function PublicMenuPage() {
                           </Badge>
                         </div>
                         {item.description && (
-                          <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+                          <p className="text-sm text-gray-800 mb-3">{item.description}</p>
                         )}
                         <div className="flex items-center justify-between">
-                          <span className="text-2xl font-bold text-orange-600">
+                          <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                             ${item.price.toFixed(2)}
                           </span>
                           <Button
                             onClick={() => addToCart(item)}
-                            className="bg-gradient-to-r from-orange-600 to-amber-600"
+                            className="bg-gradient-to-r from-blue-600 to-indigo-600"
                           >
                             <Plus className="w-4 h-4 mr-1" />
                             Add
@@ -244,7 +244,7 @@ export default function PublicMenuPage() {
                 </h2>
 
                 {cart.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
+                  <div className="text-center py-8 text-gray-700 dark:text-gray-200">
                     <ShoppingCart className="w-16 h-16 mx-auto mb-2 opacity-20" />
                     <p>Your cart is empty</p>
                   </div>
@@ -255,7 +255,7 @@ export default function PublicMenuPage() {
                         <div key={item._id} className="flex items-center gap-3 pb-4 border-b">
                           <div className="flex-1">
                             <h4 className="font-medium">{item.name}</h4>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-gray-800 dark:text-gray-100">
                               ${item.price.toFixed(2)} each
                             </p>
                           </div>
@@ -300,13 +300,13 @@ export default function PublicMenuPage() {
                       </div>
                       <div className="flex justify-between text-lg font-bold pt-2 border-t">
                         <span>Total</span>
-                        <span className="text-orange-600">
+                        <span className="text-blue-600 dark:text-blue-400">
                           ${(cartTotal * 1.1).toFixed(2)}
                         </span>
                       </div>
                     </div>
 
-                    <Button className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-lg py-6">
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-lg py-6">
                       Proceed to Checkout
                     </Button>
                   </>

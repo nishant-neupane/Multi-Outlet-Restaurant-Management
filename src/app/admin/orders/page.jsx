@@ -81,11 +81,11 @@ export default function AdminOrdersPage() {
   });
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-4 md:p-6">
       <h1 className="text-2xl md:text-3xl font-bold text-color-primary mb-6">
         All Orders (System-Wide)
       </h1>
@@ -156,8 +156,8 @@ export default function AdminOrdersPage() {
                       : order.status === "preparing"
                       ? "bg-blue-100 text-blue-800"
                       : order.status === "served"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-gray-100 text-gray-800"
+                      ? "bg-blue-100 text-blue-800"
+                      : "bg-gray-100 text-gray-800 dark:text-gray-100"
                   }`}
                 >
                   {order.status}
@@ -200,7 +200,7 @@ export default function AdminOrdersPage() {
                 {order.status === "pending" && (
                   <button
                     onClick={() => updateOrderStatus(order._id, "preparing")}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg transition"
+                    className="w-full bg-blue-50 dark:bg-slate-8000 hover:bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg transition"
                   >
                     Start Preparing
                   </button>
@@ -208,7 +208,7 @@ export default function AdminOrdersPage() {
                 {order.status === "preparing" && (
                   <button
                     onClick={() => updateOrderStatus(order._id, "served")}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2 rounded-lg transition"
+                    className="w-full bg-blue-50 dark:bg-slate-8000 hover:bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg transition"
                   >
                     Mark as Served
                   </button>

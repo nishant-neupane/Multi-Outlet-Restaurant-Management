@@ -37,7 +37,7 @@ export default function ManagerOrdersPage() {
       : orders.filter((order) => order.status === selectedStatus);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   const stats = {
@@ -49,7 +49,7 @@ export default function ManagerOrdersPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">
         Orders Management
       </h1>
@@ -64,12 +64,12 @@ export default function ManagerOrdersPage() {
         <StatCard
           title="Preparing"
           value={stats.preparing}
-          color="bg-blue-500"
+          color="bg-blue-50 dark:bg-slate-8000"
         />
         <StatCard
           title="Served"
           value={stats.served}
-          color="bg-color-success"
+          color="bg-blue-600"
         />
         <StatCard
           title="Revenue"
@@ -147,8 +147,8 @@ export default function ManagerOrdersPage() {
                         : order.status === "preparing"
                         ? "bg-blue-100 text-blue-800"
                         : order.status === "served"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-gray-100 text-gray-800"
+                        ? "bg-blue-100 text-blue-800"
+                        : "bg-gray-100 text-gray-800 dark:text-gray-100"
                     }`}
                   >
                     {order.status}

@@ -161,16 +161,16 @@ export default function ManagerBillingPage() {
   const calculateTotal = (amount) => amount + calculateTax(amount);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-4 md:p-6">
       <h1 className="text-2xl md:text-3xl font-bold text-color-primary mb-6 md:mb-8">
         Billing & Payments
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-6">
         <div className="lg:col-span-2">
           <div className="bg-color-background rounded-lg shadow p-4 md:p-6 mb-6">
             <h2 className="text-lg md:text-xl font-bold text-color-primary mb-4">
@@ -221,8 +221,8 @@ export default function ManagerBillingPage() {
                   onClick={() => setEditMode(!editMode)}
                   className={`px-3 py-1 rounded text-sm font-semibold transition ${
                     editMode
-                      ? "bg-gray-200 text-gray-700"
-                      : "bg-blue-500 text-white hover:bg-blue-600"
+                      ? "bg-gray-200 text-gray-700 dark:text-gray-200"
+                      : "bg-blue-50 dark:bg-slate-8000 text-white hover:bg-blue-600"
                   }`}
                 >
                   {editMode ? "Done" : "Edit Order"}
@@ -288,7 +288,7 @@ export default function ManagerBillingPage() {
                               </span>
                               <button
                                 onClick={() => handleRemoveItem(orderIdx, itemIdx)}
-                                className="w-6 h-6 rounded bg-red-100 hover:bg-red-200 text-red-600 flex items-center justify-center"
+                                className="w-6 h-6 rounded bg-blue-100 hover:bg-red-200 text-blue-600 flex items-center justify-center"
                               >
                                 ×
                               </button>
@@ -389,11 +389,11 @@ export default function ManagerBillingPage() {
               ) : (
                 <>
                   {showQR && payment.qrCode && (
-                    <div className="mb-4 p-4 bg-white rounded-lg border-2 border-color-accent text-center">
+                    <div className="mb-4 p-4 bg-white dark:bg-slate-800 rounded-lg border-2 border-color-accent text-center">
                       <p className="text-sm font-semibold text-color-primary mb-3">
                         Scan QR Code to Pay
                       </p>
-                      <div className="bg-white p-2 rounded inline-block">
+                      <div className="bg-white dark:bg-slate-800 p-2 rounded inline-block">
                         <img
                           src={payment.qrCode}
                           alt="Payment QR Code"
@@ -409,7 +409,7 @@ export default function ManagerBillingPage() {
                   <div className="space-y-2">
                     <button
                       onClick={handleConfirmPayment}
-                      className="w-full bg-color-success hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition"
                     >
                       Confirm Payment Received
                     </button>

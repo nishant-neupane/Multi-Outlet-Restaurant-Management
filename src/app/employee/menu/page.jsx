@@ -31,11 +31,11 @@ export default function EmployeeMenuPage() {
       : items.filter((item) => item.category === selectedCategory);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">
         Menu Reference
       </h1>
@@ -89,7 +89,7 @@ export default function EmployeeMenuPage() {
               <span
                 className={`text-xs font-semibold px-2 py-1 rounded ${
                   item.isAvailable
-                    ? "bg-color-success bg-opacity-20 text-color-success"
+                    ? "bg-blue-600 bg-opacity-20 text-color-success"
                     : "bg-color-error bg-opacity-20 text-color-error"
                 }`}
               >

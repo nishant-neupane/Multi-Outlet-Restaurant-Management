@@ -68,7 +68,7 @@ export async function POST(req) {
       phone,
       totalTables,
       manager,
-      theme: theme || "orange",
+      theme: theme || "blue",
       isActive,
     });
 

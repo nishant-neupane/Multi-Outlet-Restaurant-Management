@@ -5,37 +5,87 @@ import { applyTheme, getSavedTheme, THEMES } from "./theme-config";
 
 const ThemeContext = createContext();
 
-export function ThemeProvider({ children }) {
-  const [themeName, setThemeName] = useState("orange");
+// Detect system preference for dark/light mode
+function getSystemColorScheme() {
+  if (typeof window === "undefined") return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+export function ThemeProvider({ children, outletTheme = null }) {
+  const [themeName, setThemeName] = useState("blue");
   const [mode, setMode] = useState("light");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load saved theme on mount
+  // Load saved theme on mount and detect system preference
   useEffect(() => {
-    const saved = getSavedTheme();
-    setThemeName(saved.name);
-    setMode(saved.mode);
-    applyTheme(saved.name, saved.mode);
+    if (typeof window === "undefined") {
+      setIsLoading(false);
+      return;
+    }
+
+    // Get mode preference (saved or system preference)
+    const savedMode = localStorage.getItem("theme-mode");
+    const modePreference = savedMode || getSystemColorScheme();
+    setMode(modePreference);
+
+    // Get theme: use outlet theme if provided, otherwise use saved theme
+    let themeToApply = "blue";
+    if (outletTheme && THEMES[outletTheme]) {
+      themeToApply = outletTheme;
+    } else {
+      const saved = getSavedTheme();
+      themeToApply = saved.name;
+    }
+
+    setThemeName(themeToApply);
+    applyTheme(themeToApply, modePreference);
     setIsLoading(false);
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e) => {
+      // Only apply system change if user hasn't explicitly saved a preference
+      if (!localStorage.getItem("theme-mode")) {
+        const newMode = e.matches ? "dark" : "light";
+        setMode(newMode);
+        applyTheme(themeToApply, newMode);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   // Apply theme when changed
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && typeof window !== "undefined") {
       applyTheme(themeName, mode);
     }
   }, [themeName, mode, isLoading]);
 
   const setTheme = (newThemeName) => {
-    setThemeName(newThemeName);
+    if (THEMES[newThemeName]) {
+      setThemeName(newThemeName);
+    }
   };
 
   const toggleMode = () => {
-    setMode((prev) => (prev === "light" ? "dark" : "light"));
+    setMode((prev) => {
+      const newMode = prev === "light" ? "dark" : "light";
+      localStorage.setItem("theme-mode", newMode);
+      return newMode;
+    });
   };
 
-  const setLightMode = () => setMode("light");
-  const setDarkMode = () => setMode("dark");
+  const setLightMode = () => {
+    setMode("light");
+    localStorage.setItem("theme-mode", "light");
+  };
+
+  const setDarkMode = () => {
+    setMode("dark");
+    localStorage.setItem("theme-mode", "dark");
+  };
 
   const value = {
     themeName,
@@ -47,10 +97,13 @@ export function ThemeProvider({ children }) {
     isDark: mode === "dark",
     isLight: mode === "light",
     themes: THEMES,
+    outletTheme,
+    getSystemColorScheme,
   };
 
   if (isLoading) {
-    return null; // or a loading spinner
+    // Return a placeholder that won't cause issues
+    return <div style={{ visibility: "hidden" }}>{children}</div>;
   }
 
   return (

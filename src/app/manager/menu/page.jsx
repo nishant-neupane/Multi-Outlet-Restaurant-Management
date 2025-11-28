@@ -61,11 +61,11 @@ export default function ManagerMenuPage() {
       : safeItems.filter((item) => item.category === selectedCategory);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">
         Menu Management
       </h1>
@@ -120,7 +120,7 @@ export default function ManagerMenuPage() {
               onClick={() => toggleAvailability(item._id, item.isAvailable)}
               className={`w-full py-2 rounded-lg font-semibold transition ${
                 item.isAvailable
-                  ? "bg-color-success text-white hover:bg-green-700"
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
                   : "bg-color-error text-white hover:bg-red-700"
               }`}
             >

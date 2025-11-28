@@ -126,7 +126,7 @@ export default function EmployeeDashboard() {
         </div>
         <Button
           onClick={() => router.push("/employee/orders")}
-          className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-amber-700"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
           Create Order
@@ -149,7 +149,7 @@ export default function EmployeeDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending</CardTitle>
-            <Clock className="h-4 w-4 text-orange-600" />
+            <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.pending || 0}</div>
@@ -160,7 +160,7 @@ export default function EmployeeDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Preparing</CardTitle>
-            <AlertCircle className="h-4 w-4 text-blue-600" />
+            <AlertCircle className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.preparing || 0}</div>
@@ -171,7 +171,7 @@ export default function EmployeeDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-green-600" />
+            <DollarSign className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">

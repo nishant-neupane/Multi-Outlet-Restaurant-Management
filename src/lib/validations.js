@@ -91,7 +91,7 @@ export const createOutletSchema = z.object({
     .min(1, "Must have at least 1 table")
     .max(1000, "Too many tables")
     .default(10),
-  theme: z.enum(["orange", "green", "blue", "purple", "red"]).default("orange").optional(),
+  theme: z.enum(["blue"]).default("blue").optional(),
   isActive: z.boolean().default(true),
 });
 

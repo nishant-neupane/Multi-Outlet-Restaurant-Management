@@ -51,11 +51,11 @@ export default function PerformancePage() {
   };
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">
         My Performance
       </h1>
@@ -69,7 +69,7 @@ export default function PerformancePage() {
         <StatCard
           title="Completed Orders"
           value={stats.completedOrders}
-          color="bg-color-success"
+          color="bg-blue-600"
         />
         <StatCard
           title="Total Revenue"
@@ -79,7 +79,7 @@ export default function PerformancePage() {
         <StatCard
           title="Avg Order Value"
           value={`Rs. ${stats.averageOrderValue}`}
-          color="bg-blue-500"
+          color="bg-blue-50 dark:bg-slate-8000"
         />
       </div>
 

@@ -124,10 +124,10 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-slate-800">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600 font-medium">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <p className="mt-4 text-gray-800 font-medium">
             Loading dashboard data...
           </p>
         </div>
@@ -137,13 +137,13 @@ export default function AdminDashboard() {
 
   if (error) {
     return (
-      <div className="p-8 bg-gray-50 min-h-screen">
-        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-red-200">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <p className="text-red-600 text-center mb-4">{error}</p>
+      <div className="p-6 bg-gray-50 dark:bg-slate-800 min-h-screen">
+        <div className="max-w-md mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-blue-200">
+          <AlertCircle className="w-12 h-12 text-blue-500 mx-auto mb-4" />
+          <p className="text-blue-600 text-center mb-4">{error}</p>
           <button
             onClick={fetchDashboardData}
-            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-lg"
           >
             Retry
           </button>
@@ -158,8 +158,8 @@ export default function AdminDashboard() {
       value: stats.totalOutlets,
       icon: Store,
       gradient: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600",
+      bgColor: "bg-blue-50 dark:bg-slate-800",
+      iconColor: "text-blue-600 dark:text-blue-400",
       change: "+12%",
       isPositive: true,
     },
@@ -167,9 +167,9 @@ export default function AdminDashboard() {
       title: "Total Orders",
       value: stats.totalOrders,
       icon: ShoppingCart,
-      gradient: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50",
-      iconColor: "text-orange-600",
+      gradient: "from-blue-500 to-indigo-600",
+      bgColor: "bg-blue-50 dark:bg-slate-800",
+      iconColor: "text-blue-600 dark:text-blue-400",
       change: "+23%",
       isPositive: true,
       subtitle: `${stats.completedOrders} completed`,
@@ -178,9 +178,9 @@ export default function AdminDashboard() {
       title: "Total Revenue",
       value: `Rs. ${stats.totalRevenue.toLocaleString()}`,
       icon: DollarSign,
-      gradient: "from-green-500 to-green-600",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
+      gradient: "from-blue-500 to-blue-600",
+      bgColor: "bg-green-50 dark:bg-slate-800",
+      iconColor: "text-blue-600 dark:text-blue-400",
       change: "+18%",
       isPositive: true,
     },
@@ -188,31 +188,31 @@ export default function AdminDashboard() {
       title: "Total Users",
       value: stats.totalUsers,
       icon: Users,
-      gradient: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      iconColor: "text-purple-600",
+      gradient: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-50 dark:bg-slate-800",
+      iconColor: "text-blue-600 dark:text-blue-400",
       change: "+8%",
       isPositive: true,
     },
   ];
 
   return (
-    <div className="h-screen bg-gray-50 flex flex-col animate-fadeIn">
+    <div className="h-screen bg-gray-50 dark:bg-slate-800 flex flex-col animate-fadeIn">
       {/* Fixed Header */}
-      <div className="flex-shrink-0 bg-white border-b border-gray-200 px-8 py-6">
+      <div className="flex-shrink-0 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-8 py-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-950 !dark:text-white mb-2">
               Admin Dashboard
             </h1>
-            <p className="text-gray-600">
-              Welcome back, <span className="font-semibold text-orange-600">{user?.name}</span>!
+            <p className="text-gray-800 dark:text-gray-100">
+              Welcome back, <span className="font-semibold text-blue-600 dark:text-blue-400">{user?.name}</span>!
               Here's what's happening today.
             </p>
           </div>
           <button
             onClick={fetchDashboardData}
-            className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 group"
+            className="flex items-center gap-2 bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-gray-100 font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 dark:border-slate-600 group"
           >
             <RefreshCw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
             Refresh
@@ -228,17 +228,17 @@ export default function AdminDashboard() {
         {statCards.map((stat, index) => (
           <div
             key={stat.title}
-            className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 card-hover animate-scaleIn"
+            className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300 card-hover animate-scaleIn"
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="text-sm font-medium text-gray-600 mb-1">
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-3xl font-bold text-gray-950 !dark:text-white">{stat.value}</p>
                 {stat.subtitle && (
-                  <p className="text-xs text-gray-500 mt-1">{stat.subtitle}</p>
+                  <p className="text-xs text-gray-700 dark:text-gray-100 mt-1">{stat.subtitle}</p>
                 )}
               </div>
               <div
@@ -249,18 +249,18 @@ export default function AdminDashboard() {
             </div>
             <div className="flex items-center gap-2">
               {stat.isPositive ? (
-                <TrendingUp className="w-4 h-4 text-green-500" />
+                <TrendingUp className="w-4 h-4 text-blue-500" />
               ) : (
-                <TrendingDown className="w-4 h-4 text-red-500" />
+                <TrendingDown className="w-4 h-4 text-blue-500" />
               )}
               <span
                 className={`text-sm font-semibold ${
-                  stat.isPositive ? "text-green-600" : "text-red-600"
+                  stat.isPositive ? "text-blue-600 dark:text-blue-400" : "text-blue-600 dark:text-blue-400"
                 }`}
               >
                 {stat.change}
               </span>
-              <span className="text-sm text-gray-500">vs last month</span>
+              <span className="text-sm text-gray-700 dark:text-gray-100">vs last month</span>
             </div>
           </div>
         ))}
@@ -269,9 +269,9 @@ export default function AdminDashboard() {
       {/* Charts and Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         {/* Order Status */}
-        <div className="lg:col-span-1 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Package className="w-5 h-5 text-orange-600" />
+        <div className="lg:col-span-1 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700">
+          <h2 className="text-xl font-bold text-gray-950 !dark:text-white mb-6 flex items-center gap-2">
+            <Package className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             Order Status
           </h2>
           <OrderStatusChart
@@ -282,9 +282,9 @@ export default function AdminDashboard() {
         </div>
 
         {/* Revenue Overview */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-green-600" />
+        <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700">
+          <h2 className="text-xl font-bold text-gray-950 !dark:text-white mb-6 flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             Revenue Overview
           </h2>
           <RevenueChart revenue={stats.totalRevenue} />
@@ -343,27 +343,27 @@ function OrderStatusChart({ pending, completed, total }) {
             </defs>
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <p className="text-3xl font-bold text-gray-900">{completionRate}%</p>
-            <p className="text-sm text-gray-500">Completed</p>
+            <p className="text-3xl font-bold text-gray-950 !dark:text-white">{completionRate}%</p>
+            <p className="text-sm text-gray-700 dark:text-gray-100">Completed</p>
           </div>
         </div>
       </div>
 
       {/* Stats */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+        <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-slate-800 rounded-xl">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-600" />
-            <span className="text-sm font-medium text-gray-700">Completed</span>
+            <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-100">Completed</span>
           </div>
-          <span className="text-lg font-bold text-green-600">{completed}</span>
+          <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{completed}</span>
         </div>
-        <div className="flex items-center justify-between p-3 bg-orange-50 rounded-xl">
+        <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-slate-800 rounded-xl">
           <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-medium text-gray-700">Pending</span>
+            <Clock className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-100">Pending</span>
           </div>
-          <span className="text-lg font-bold text-orange-600">{pending}</span>
+          <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{pending}</span>
         </div>
       </div>
     </div>
@@ -378,58 +378,58 @@ function RevenueChart({ revenue }) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-4xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-gray-950 !dark:text-white">
             Rs. {revenue.toLocaleString()}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Total Revenue</p>
+          <p className="text-sm text-gray-700 mt-1">Total Revenue</p>
         </div>
         <div className="text-right">
-          <div className="flex items-center gap-1 text-green-600">
+          <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400">
             <TrendingUp className="w-5 h-5" />
             <span className="text-2xl font-bold">+15.2%</span>
           </div>
-          <p className="text-sm text-gray-500">vs last month</p>
+          <p className="text-sm text-gray-700 dark:text-gray-100">vs last month</p>
         </div>
       </div>
 
       {/* Progress Bar */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-600">
+          <span className="text-sm font-medium text-gray-800 dark:text-gray-100">
             Monthly Target
           </span>
-          <span className="text-sm font-bold text-gray-900">
+          <span className="text-sm font-bold text-gray-950 !dark:text-white">
             Rs. {target.toLocaleString()}
           </span>
         </div>
         <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <p className="text-sm text-gray-600 mt-2 text-right">
+        <p className="text-sm text-gray-800 mt-2 text-right">
           {progress.toFixed(1)}% achieved
         </p>
       </div>
 
       {/* Mini Stats */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4">
-          <p className="text-sm text-blue-600 font-medium mb-1">Today</p>
-          <p className="text-2xl font-bold text-blue-900">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4">
+          <p className="text-sm text-blue-600 dark:text-blue-300 font-medium mb-1">Today</p>
+          <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
             Rs. {(revenue * 0.05).toLocaleString(undefined, { maximumFractionDigits: 0 })}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4">
-          <p className="text-sm text-purple-600 font-medium mb-1">This Week</p>
-          <p className="text-2xl font-bold text-purple-900">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-4">
+          <p className="text-sm text-blue-600 dark:text-blue-300 font-medium mb-1">This Week</p>
+          <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
             Rs. {(revenue * 0.25).toLocaleString(undefined, { maximumFractionDigits: 0 })}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-4">
-          <p className="text-sm text-orange-600 font-medium mb-1">This Month</p>
-          <p className="text-2xl font-bold text-orange-900">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-indigo-900/30 dark:to-blue-800/30 rounded-xl p-4">
+          <p className="text-sm text-blue-600 dark:text-blue-300 font-medium mb-1">This Month</p>
+          <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
             Rs. {revenue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
           </p>
         </div>
@@ -442,26 +442,26 @@ function RecentOrders({ orders }) {
   const getStatusColor = (status) => {
     switch (status) {
       case "completed":
-        return "bg-green-100 text-green-700 border-green-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       case "pending":
-        return "bg-orange-100 text-orange-700 border-orange-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       case "cancelled":
-        return "bg-red-100 text-red-700 border-red-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       default:
-        return "bg-gray-100 text-gray-700 border-gray-200";
+        return "bg-gray-100 text-gray-700 border-gray-200 dark:border-slate-700";
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <ShoppingCart className="w-5 h-5 text-orange-600" />
+        <h2 className="text-xl font-bold text-gray-950 !dark:text-white flex items-center gap-2">
+          <ShoppingCart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           Recent Orders
         </h2>
         <a
           href="/admin/orders"
-          className="text-sm font-semibold text-orange-600 hover:text-orange-700 flex items-center gap-1 group"
+          className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 group"
         >
           View All
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -473,16 +473,16 @@ function RecentOrders({ orders }) {
           {orders.map((order, index) => (
             <div
               key={order._id}
-              className="flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 transition-all duration-200 animate-slideIn"
+              className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 rounded-xl border border-gray-200 transition-all duration-200 animate-slideIn"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className="flex-1">
-                <p className="font-semibold text-gray-900">{order.orderNumber}</p>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="font-semibold text-gray-950 !dark:text-white">{order.orderNumber}</p>
+                <p className="text-sm text-gray-800 mt-1">
                   {order.outlet?.name || "No outlet"} • {order.orderType}
                   {order.tableNumber && ` • Table ${order.tableNumber}`}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   {new Date(order.createdAt).toLocaleDateString()} •{" "}
                   {new Date(order.createdAt).toLocaleTimeString([], {
                     hour: "2-digit",
@@ -491,7 +491,7 @@ function RecentOrders({ orders }) {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-lg font-bold text-gray-900 mb-2">
+                <p className="text-lg font-bold text-gray-950 mb-2">
                   Rs. {order.totalAmount?.toLocaleString()}
                 </p>
                 <span
@@ -508,8 +508,8 @@ function RecentOrders({ orders }) {
       ) : (
         <div className="text-center py-12">
           <ShoppingCart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500 font-medium">No recent orders</p>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-gray-700 font-medium">No recent orders</p>
+          <p className="text-sm text-gray-600 mt-1">
             Orders will appear here as they are created
           </p>
         </div>
@@ -522,26 +522,26 @@ function RecentUsers({ users }) {
   const getRoleColor = (role) => {
     switch (role) {
       case "admin":
-        return "bg-purple-100 text-purple-700 border-purple-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       case "manager":
         return "bg-blue-100 text-blue-700 border-blue-200";
       case "employee":
-        return "bg-green-100 text-green-700 border-green-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       default:
-        return "bg-gray-100 text-gray-700 border-gray-200";
+        return "bg-gray-100 text-gray-700 border-gray-200 dark:border-slate-700";
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <Users className="w-5 h-5 text-purple-600" />
+        <h2 className="text-xl font-bold text-gray-950 !dark:text-white flex items-center gap-2">
+          <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           Recent Users
         </h2>
         <a
           href="/admin/users"
-          className="text-sm font-semibold text-orange-600 hover:text-orange-700 flex items-center gap-1 group"
+          className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 group"
         >
           View All
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -553,17 +553,17 @@ function RecentUsers({ users }) {
           {users.map((user, index) => (
             <div
               key={user._id}
-              className="flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 transition-all duration-200 animate-slideIn"
+              className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 rounded-xl border border-gray-200 transition-all duration-200 animate-slideIn"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className="flex items-center gap-3 flex-1">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold">
                   {user.name.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">{user.name}</p>
-                  <p className="text-sm text-gray-600">{user.email}</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="font-semibold text-gray-950 !dark:text-white">{user.name}</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-100">{user.email}</p>
+                  <p className="text-xs text-gray-700 mt-1">
                     Joined {new Date(user.createdAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -576,7 +576,7 @@ function RecentUsers({ users }) {
                 >
                   {user.role}
                 </span>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   {user.outlet?.name || "No outlet"}
                 </p>
               </div>
@@ -586,8 +586,8 @@ function RecentUsers({ users }) {
       ) : (
         <div className="text-center py-12">
           <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500 font-medium">No users found</p>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-gray-700 font-medium">No users found</p>
+          <p className="text-sm text-gray-600 mt-1">
             Users will appear here as they register
           </p>
         </div>
@@ -610,33 +610,33 @@ function QuickActions() {
       description: "Control user accounts and permissions",
       href: "/admin/users",
       icon: Users,
-      gradient: "from-purple-500 to-purple-600",
+      gradient: "from-blue-500 to-blue-600",
     },
     {
       title: "View Orders",
       description: "Monitor and manage all orders",
       href: "/admin/orders",
       icon: ShoppingCart,
-      gradient: "from-orange-500 to-orange-600",
+      gradient: "from-blue-500 to-indigo-600",
     },
     {
       title: "View Reports",
       description: "Generate sales and performance reports",
       href: "/admin/reports",
       icon: TrendingUp,
-      gradient: "from-green-500 to-green-600",
+      gradient: "from-blue-500 to-blue-600",
     },
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-      <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-slate-700">
+      <h2 className="text-xl font-bold text-gray-950 !dark:text-white mb-6">Quick Actions</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {actions.map((action, index) => (
           <a
             key={action.href}
             href={action.href}
-            className={`group bg-gradient-to-br ${action.gradient} text-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scaleIn`}
+            className={`group bg-gradient-to-br ${action.gradient} text-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 animate-scaleIn`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <action.icon className="w-10 h-10 mb-4 group-hover:scale-110 transition-transform duration-200" />

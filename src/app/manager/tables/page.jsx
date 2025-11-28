@@ -29,7 +29,7 @@ export default function TablesPage() {
   const occupiedTables = tables.filter((t) => t.status === "occupied").length
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">Table Management</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -56,7 +56,7 @@ export default function TablesPage() {
               onClick={() => toggleTableStatus(table.number)}
               className={`p-6 rounded-lg font-bold text-lg transition ${
                 table.status === "available"
-                  ? "bg-color-success text-white hover:bg-green-700"
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
                   : "bg-color-warning text-white hover:bg-yellow-700"
               }`}
             >

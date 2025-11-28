@@ -144,46 +144,46 @@ export default function AdminMenuPage() {
   const getCategoryColor = (category) => {
     switch (category) {
       case "appetizer":
-        return "bg-orange-100 text-orange-700 border-orange-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       case "main":
-        return "bg-red-100 text-red-700 border-red-200";
+        return "bg-blue-100 text-blue-700 border-blue-200";
       case "dessert":
         return "bg-pink-100 text-pink-700 border-pink-200";
       case "beverage":
         return "bg-blue-100 text-blue-700 border-blue-200";
       default:
-        return "bg-gray-100 text-gray-700 border-gray-200";
+        return "bg-gray-100 text-gray-700 border-gray-200 dark:border-slate-700";
     }
   };
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-50">
+      <div className="flex items-center justify-center h-screen bg-gray-50 dark:bg-slate-800">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600 font-medium">Loading menu...</p>
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <p className="mt-4 text-gray-800 font-medium">Loading menu...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gray-50 flex flex-col animate-fadeIn">
+    <div className="h-screen bg-gray-50 dark:bg-slate-800 flex flex-col animate-fadeIn">
       {/* Fixed Header */}
-      <div className="flex-shrink-0 bg-white border-b border-gray-200 px-8 py-6">
+      <div className="flex-shrink-0 bg-white dark:bg-slate-800 border-b border-gray-200 px-8 py-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2 flex items-center gap-3">
-              <UtensilsCrossed className="w-10 h-10 text-orange-600" />
+            <h1 className="text-3xl font-bold text-gray-950 mb-2 flex items-center gap-3">
+              <UtensilsCrossed className="w-10 h-10 text-blue-600 dark:text-blue-400" />
               Menu Management
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-800 dark:text-gray-100">
               Create and manage menu items across all outlets
             </p>
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-lg"
           >
             <Plus className="w-5 h-5" />
             {showForm ? "Cancel" : "Add Menu Item"}
@@ -195,9 +195,9 @@ export default function AdminMenuPage() {
       <div className="flex-1 overflow-y-auto px-8 py-6">
         {/* Add Item Form */}
         {showForm && (
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-gray-100 animate-scaleIn">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Plus className="w-5 h-5 text-orange-600" />
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6 border border-gray-100 animate-scaleIn">
+            <h2 className="text-xl font-bold text-gray-950 mb-6 flex items-center gap-2">
+              <Plus className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               Add New Menu Item
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -212,7 +212,7 @@ export default function AdminMenuPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     placeholder="Delicious Pizza"
                     required
                   />
@@ -227,7 +227,7 @@ export default function AdminMenuPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, outlet: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     required
                   >
                     <option value="">Select Outlet</option>
@@ -248,7 +248,7 @@ export default function AdminMenuPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     required
                   >
                     <option value="appetizer">Appetizer</option>
@@ -263,7 +263,7 @@ export default function AdminMenuPage() {
                     Price (Rs.)
                   </label>
                   <div className="relative">
-                    <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-600 dark:text-gray-300" />
                     <input
                       type="number"
                       step="0.01"
@@ -271,7 +271,7 @@ export default function AdminMenuPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, price: e.target.value })
                       }
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                       placeholder="299.00"
                       required
                     />
@@ -290,7 +290,7 @@ export default function AdminMenuPage() {
                         isAvailable: e.target.value === "true",
                       })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   >
                     <option value="true">Available</option>
                     <option value="false">Unavailable</option>
@@ -306,7 +306,7 @@ export default function AdminMenuPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, description: e.target.value })
                     }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     rows="3"
                     placeholder="Brief description of the item..."
                     required
@@ -318,13 +318,13 @@ export default function AdminMenuPage() {
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="flex-1 py-3 px-6 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all duration-200"
+                  className="flex-1 py-3 px-6 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 dark:bg-slate-800 transition-all duration-200"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-lg"
                 >
                   Add Item
                 </button>
@@ -341,8 +341,8 @@ export default function AdminMenuPage() {
               onClick={() => setSelectedCategory(cat.value)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-200 whitespace-nowrap ${
                 selectedCategory === cat.value
-                  ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg"
+                  : "bg-gray-100 text-gray-900 hover:bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700"
               }`}
             >
               <cat.icon className="w-4 h-4" />
@@ -352,15 +352,15 @@ export default function AdminMenuPage() {
         </div>
 
         {/* Search Bar */}
-        <div className="bg-white rounded-xl shadow-md p-4 mb-6">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 mb-6">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-600 dark:text-gray-300" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search menu items..."
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
             />
           </div>
         </div>
@@ -371,25 +371,25 @@ export default function AdminMenuPage() {
             {filteredItems.map((item, index) => (
               <div
                 key={item._id}
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 card-hover animate-scaleIn"
+                className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 card-hover animate-scaleIn"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                <div className="h-48 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
                   <UtensilsCrossed className="w-20 h-20 text-white opacity-50" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-lg font-bold text-gray-900 flex-1">
+                    <h3 className="text-lg font-bold text-gray-950 flex-1">
                       {item.name}
                     </h3>
                     <button
                       onClick={() => handleDelete(item._id)}
-                      className="p-2 hover:bg-red-50 text-red-600 rounded-lg transition-colors"
+                      className="p-2 hover:bg-red-50 text-blue-600 rounded-lg transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  <p className="text-sm text-gray-800 mb-3 line-clamp-2">
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between mb-3">
@@ -403,14 +403,14 @@ export default function AdminMenuPage() {
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${
                         item.isAvailable
-                          ? "bg-green-50 text-green-700 border-green-200"
-                          : "bg-red-50 text-red-700 border-red-200"
+                          ? "bg-green-50 text-blue-700 border-blue-200"
+                          : "bg-red-50 text-blue-700 border-blue-200"
                       }`}
                     >
                       {item.isAvailable ? "Available" : "Unavailable"}
                     </span>
                   </div>
-                  <div className="text-2xl font-bold text-orange-600">
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                     Rs. {item.price?.toLocaleString() || "0"}
                   </div>
                 </div>
@@ -418,10 +418,10 @@ export default function AdminMenuPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-2xl shadow-lg p-12 text-center border border-gray-100">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-12 text-center border border-gray-100 dark:border-slate-700">
             <UtensilsCrossed className="w-20 h-20 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 font-medium text-lg">No menu items found</p>
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-gray-700 font-medium text-lg">No menu items found</p>
+            <p className="text-sm text-gray-600 mt-2">
               {searchTerm
                 ? "Try adjusting your search"
                 : "Click 'Add Menu Item' to create your first item"}
@@ -430,7 +430,7 @@ export default function AdminMenuPage() {
         )}
 
         {/* Footer Stats */}
-        <div className="mt-6 text-center text-sm text-gray-500 pb-6">
+        <div className="mt-6 text-center text-sm text-gray-700 pb-6">
           Showing {filteredItems.length} of {safeItems.length} items
         </div>
       </div>

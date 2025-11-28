@@ -131,13 +131,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex flex-col">
       {/* Header */}
       <header className="p-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ChefHat className="w-8 h-8 text-orange-600" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+            <ChefHat className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               RestaurantOS
             </span>
           </div>
@@ -153,24 +153,24 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
+        <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-6 items-center">
           {/* Left Side - Branding */}
           <div className="hidden lg:block">
             <div className="space-y-6">
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-6 h-6 text-orange-600" />
-                <span className="text-sm font-semibold text-orange-600 uppercase tracking-wide">
+                <Sparkles className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">
                   Modern Restaurant Management
                 </span>
               </div>
-              <h1 className="text-5xl font-bold leading-tight">
+              <h1 className="text-3xl font-bold leading-tight">
                 Manage Your
                 <br />
-                <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   Restaurant Empire
                 </span>
               </h1>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-gray-800 dark:text-gray-100">
                 Complete restaurant management solution with real-time order tracking,
                 menu management, and powerful analytics.
               </p>
@@ -182,10 +182,10 @@ export default function Home() {
                   "Role-based access control",
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-white" />
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white dark:bg-slate-800" />
                     </div>
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -194,7 +194,7 @@ export default function Home() {
 
           {/* Right Side - Auth Form */}
           <div>
-            <Card className="border-2 shadow-2xl">
+            <Card className="border-2 shadow-lg">
               <CardHeader className="space-y-1">
                 <CardTitle className="text-2xl text-center">Welcome</CardTitle>
                 <CardDescription className="text-center">
@@ -220,7 +220,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <Label htmlFor="login-email">Email</Label>
                         <div className="relative">
-                          <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                          <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-600 dark:text-gray-300" />
                           <Input
                             id="login-email"
                             type="email"
@@ -236,7 +236,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <Label htmlFor="login-password">Password</Label>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                          <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-600 dark:text-gray-300" />
                           <Input
                             id="login-password"
                             type="password"
@@ -251,7 +251,7 @@ export default function Home() {
 
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700"
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
                         disabled={loading}
                       >
                         {loading ? (
@@ -272,7 +272,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <Label htmlFor="signup-name">Full Name</Label>
                         <div className="relative">
-                          <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                          <User className="absolute left-3 top-3 h-4 w-4 text-gray-600 dark:text-gray-300" />
                           <Input
                             id="signup-name"
                             type="text"
@@ -288,7 +288,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <Label htmlFor="signup-email">Email</Label>
                         <div className="relative">
-                          <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                          <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-600 dark:text-gray-300" />
                           <Input
                             id="signup-email"
                             type="email"
@@ -304,7 +304,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <Label htmlFor="signup-password">Password</Label>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                          <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-600 dark:text-gray-300" />
                           <Input
                             id="signup-password"
                             type="password"
@@ -339,7 +339,7 @@ export default function Home() {
                         <div className="space-y-2">
                           <Label htmlFor="signup-outlet">Outlet</Label>
                           <div className="relative">
-                            <Building2 className="absolute left-3 top-3 h-4 w-4 text-gray-400 z-10" />
+                            <Building2 className="absolute left-3 top-3 h-4 w-4 text-gray-600 z-10" />
                             <Select
                               value={formData.outlet}
                               onValueChange={(value) => handleChange("outlet", value)}
@@ -362,7 +362,7 @@ export default function Home() {
 
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700"
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
                         disabled={loading}
                       >
                         {loading ? (
@@ -382,17 +382,17 @@ export default function Home() {
                 </Tabs>
               </CardContent>
               <CardFooter className="flex flex-col space-y-4">
-                <div className="text-sm text-center text-gray-500">
+                <div className="text-sm text-center text-gray-700 dark:text-gray-200">
                   By signing in, you agree to our Terms of Service and Privacy Policy
                 </div>
               </CardFooter>
             </Card>
 
             {/* Demo Credentials */}
-            <Card className="mt-4 bg-gradient-to-r from-orange-50 to-amber-50 border-orange-200">
+            <Card className="mt-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
               <CardContent className="pt-6">
-                <p className="text-sm font-semibold text-orange-800 mb-2">Demo Credentials:</p>
-                <div className="space-y-1 text-sm text-gray-700">
+                <p className="text-sm font-semibold text-blue-800 mb-2">Demo Credentials:</p>
+                <div className="space-y-1 text-sm text-gray-700 dark:text-gray-200">
                   <p><strong>Admin:</strong> admin@demo.com / Admin@123</p>
                   <p><strong>Manager:</strong> manager@demo.com / Manager@123</p>
                   <p><strong>Employee:</strong> employee@demo.com / Employee@123</p>
@@ -404,7 +404,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="p-4 text-center text-sm text-gray-500">
+      <footer className="p-4 text-center text-sm text-gray-700 dark:text-gray-200">
         © 2024 RestaurantOS. All rights reserved.
       </footer>
     </div>

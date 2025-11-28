@@ -16,7 +16,7 @@ export default function OutletsPage() {
     address: "",
     phone: "",
     totalTables: "10",
-    theme: "orange",
+    theme: "blue",
   });
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function OutletsPage() {
       address: outlet.address,
       phone: outlet.phone,
       totalTables: outlet.totalTables.toString(),
-      theme: outlet.theme || "orange",
+      theme: outlet.theme || "blue",
     });
     setShowForm(true);
   };
@@ -76,7 +76,7 @@ export default function OutletsPage() {
       address: "",
       phone: "",
       totalTables: "10",
-      theme: "orange",
+      theme: "blue",
     });
     setShowForm(false);
   };
@@ -109,7 +109,7 @@ export default function OutletsPage() {
           address: "",
           phone: "",
           totalTables: "10",
-          theme: "orange",
+          theme: "blue",
         });
         setShowForm(false);
         setEditingOutlet(null);
@@ -121,11 +121,11 @@ export default function OutletsPage() {
   };
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-6">Loading...</div>;
   }
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-color-primary">
           Outlets Management
@@ -235,7 +235,7 @@ export default function OutletsPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, theme: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-color-border rounded-lg focus:outline-none focus:ring-2 focus:ring-color-accent bg-white"
+                  className="w-full px-4 py-2 border border-color-border rounded-lg focus:outline-none focus:ring-2 focus:ring-color-accent bg-white dark:bg-slate-800"
                 >
                   {Object.entries(THEMES).map(([key, theme]) => (
                     <option key={key} value={key}>
@@ -247,11 +247,11 @@ export default function OutletsPage() {
                   <div
                     className="w-6 h-6 rounded border border-color-border"
                     style={{
-                      backgroundColor: THEMES[formData.theme].light.primary,
+                      backgroundColor: (THEMES[formData.theme] || THEMES["blue"]).light.primary,
                     }}
                   />
                   <span className="text-xs text-color-text-light">
-                    Preview: {THEMES[formData.theme].name}
+                    Preview: {(THEMES[formData.theme] || THEMES["blue"]).name}
                   </span>
                 </div>
               </div>
@@ -285,11 +285,11 @@ export default function OutletsPage() {
                 <div
                   className="w-5 h-5 rounded border border-color-border"
                   style={{
-                    backgroundColor: THEMES[outlet.theme || "orange"].light.primary,
+                    backgroundColor: (THEMES[outlet.theme] || THEMES["blue"]).light.primary,
                   }}
                 />
                 <span className="text-sm">
-                  {THEMES[outlet.theme || "orange"].name}
+                  {(THEMES[outlet.theme] || THEMES["blue"]).name}
                 </span>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function OutletsPage() {
               <span
                 className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
                   outlet.isActive
-                    ? "bg-color-success bg-opacity-20 text-white"
+                    ? "bg-blue-600 bg-opacity-20 text-white"
                     : "bg-color-error bg-opacity-20 text-white"
                 }`}
               >

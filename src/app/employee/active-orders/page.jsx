@@ -73,11 +73,11 @@ export default function ActiveOrdersPage() {
     selectedStatus === "all" ? orders : orders.filter((order) => order.status === selectedStatus)
 
   if (loading) {
-    return <div className="p-8">Loading...</div>
+    return <div className="p-6">Loading...</div>
   }
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-color-primary mb-8">Active Orders</h1>
 
       <div className="mb-6 flex gap-2 flex-wrap">
@@ -111,8 +111,8 @@ export default function ActiveOrdersPage() {
                     : order.status === "preparing"
                     ? "bg-blue-100 text-blue-800"
                     : order.status === "served"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-gray-100 text-gray-800"
+                    ? "bg-blue-100 text-blue-800"
+                    : "bg-gray-100 text-gray-800 dark:text-gray-100"
                 }`}
               >
                 {order.status}
@@ -146,13 +146,13 @@ export default function ActiveOrdersPage() {
               {order.status === "preparing" && (
                 <button
                   onClick={() => updateOrderStatus(order._id, "served")}
-                  className="w-full bg-color-success hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition"
                 >
                   Mark as Served
                 </button>
               )}
               {order.status === "served" && (
-                <div className="w-full bg-blue-50 text-blue-700 font-semibold py-2 rounded-lg text-center">
+                <div className="w-full bg-blue-50 dark:bg-slate-800 text-blue-700 font-semibold py-2 rounded-lg text-center">
                   Go to Billing page to process payment
                 </div>
               )}

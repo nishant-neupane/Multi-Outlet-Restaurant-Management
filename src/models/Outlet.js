@@ -34,8 +34,8 @@ const outletSchema = new mongoose.Schema(
     },
     theme: {
       type: String,
-      enum: ["orange", "green", "blue", "purple", "red"],
-      default: "orange",
+      enum: ["blue"],
+      default: "blue",
     },
     isActive: {
       type: Boolean,
